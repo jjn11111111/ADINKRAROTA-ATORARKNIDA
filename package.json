@@ -1,0 +1,26 @@
+{
+  "name": "adinkrarota-atorarknida",
+  "version": "1.0.0",
+  "description": "A full 78 card tarot deck with extensive guidebook, unites the form of tarot and adinkra in an amalgamation that is greater than the sum of its parts",
+  "main": "index.html",
+  "scripts": {
+    "start": "firebase serve",
+    "deploy": "firebase deploy"
+  },
+  "keywords": [
+    "tarot",
+    "adinkra",
+    "divination",
+    "3d",
+    "firebase"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "firebase": "^10.7.1",
+    "three": "^0.159.0"
+  },
+  "devDependencies": {
+    "firebase-tools": "^13.0.2"
+  }
+}

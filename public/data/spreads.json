@@ -1,0 +1,280 @@
+{
+  "spreads": [
+    {
+      "id": "single-card",
+      "name": "Single Card Draw",
+      "description": "A simple one-card draw for quick guidance or daily insight",
+      "positions": [
+        {
+          "position": 1,
+          "name": "The Message",
+          "meaning": "What you need to know right now"
+        }
+      ]
+    },
+    {
+      "id": "three-card",
+      "name": "Three Card Spread",
+      "description": "The classic three-card spread offering past-present-future insight",
+      "positions": [
+        {
+          "position": 1,
+          "name": "Past",
+          "meaning": "What has led you to this moment"
+        },
+        {
+          "position": 2,
+          "name": "Present",
+          "meaning": "Where you are now and current influences"
+        },
+        {
+          "position": 3,
+          "name": "Future",
+          "meaning": "Where you are headed and potential outcome"
+        }
+      ]
+    },
+    {
+      "id": "five-card-crossroads",
+      "name": "Five Card Crossroads",
+      "description": "For decision-making when facing multiple paths",
+      "positions": [
+        {
+          "position": 1,
+          "name": "The Situation",
+          "meaning": "Your current position at the crossroads"
+        },
+        {
+          "position": 2,
+          "name": "Path A",
+          "meaning": "Outcome if you choose this path"
+        },
+        {
+          "position": 3,
+          "name": "Path B",
+          "meaning": "Outcome if you choose this path"
+        },
+        {
+          "position": 4,
+          "name": "Hidden Influence",
+          "meaning": "What you may not be seeing clearly"
+        },
+        {
+          "position": 5,
+          "name": "Guidance",
+          "meaning": "Advice for making your decision"
+        }
+      ]
+    },
+    {
+      "id": "celtic-cross",
+      "name": "Celtic Cross",
+      "description": "The most famous tarot spread providing comprehensive insight",
+      "positions": [
+        {
+          "position": 1,
+          "name": "Present Situation",
+          "meaning": "The heart of the matter, your current state"
+        },
+        {
+          "position": 2,
+          "name": "Challenge",
+          "meaning": "What crosses you, obstacles or opposing forces"
+        },
+        {
+          "position": 3,
+          "name": "Conscious Mind",
+          "meaning": "What you are aware of, your conscious thoughts"
+        },
+        {
+          "position": 4,
+          "name": "Subconscious",
+          "meaning": "Hidden influences, your unconscious motivations"
+        },
+        {
+          "position": 5,
+          "name": "Recent Past",
+          "meaning": "What is behind you, recent influences"
+        },
+        {
+          "position": 6,
+          "name": "Near Future",
+          "meaning": "What is ahead, upcoming influences"
+        },
+        {
+          "position": 7,
+          "name": "Your Approach",
+          "meaning": "How you view yourself in this situation"
+        },
+        {
+          "position": 8,
+          "name": "External Influences",
+          "meaning": "How others see you, environmental factors"
+        },
+        {
+          "position": 9,
+          "name": "Hopes and Fears",
+          "meaning": "Your aspirations and anxieties"
+        },
+        {
+          "position": 10,
+          "name": "Outcome",
+          "meaning": "The final result, synthesis of all influences"
+        }
+      ]
+    },
+    {
+      "id": "horseshoe",
+      "name": "Horseshoe Spread",
+      "description": "Seven cards arranged in a horseshoe pattern for situation analysis",
+      "positions": [
+        {
+          "position": 1,
+          "name": "Past",
+          "meaning": "Influences from the past"
+        },
+        {
+          "position": 2,
+          "name": "Present",
+          "meaning": "Current situation"
+        },
+        {
+          "position": 3,
+          "name": "Hidden Influences",
+          "meaning": "Factors you may not be aware of"
+        },
+        {
+          "position": 4,
+          "name": "Obstacles",
+          "meaning": "What stands in your way"
+        },
+        {
+          "position": 5,
+          "name": "Environment",
+          "meaning": "External attitudes and influences"
+        },
+        {
+          "position": 6,
+          "name": "Advice",
+          "meaning": "What you should do"
+        },
+        {
+          "position": 7,
+          "name": "Outcome",
+          "meaning": "Likely result"
+        }
+      ]
+    },
+    {
+      "id": "chakra-spread",
+      "name": "Seven Chakra Spread",
+      "description": "Align your energy centers with this spiritual spread",
+      "positions": [
+        {
+          "position": 1,
+          "name": "Root Chakra",
+          "meaning": "Foundation, survival, grounding"
+        },
+        {
+          "position": 2,
+          "name": "Sacral Chakra",
+          "meaning": "Creativity, sexuality, emotions"
+        },
+        {
+          "position": 3,
+          "name": "Solar Plexus Chakra",
+          "meaning": "Personal power, confidence, will"
+        },
+        {
+          "position": 4,
+          "name": "Heart Chakra",
+          "meaning": "Love, compassion, connection"
+        },
+        {
+          "position": 5,
+          "name": "Throat Chakra",
+          "meaning": "Communication, expression, truth"
+        },
+        {
+          "position": 6,
+          "name": "Third Eye Chakra",
+          "meaning": "Intuition, insight, wisdom"
+        },
+        {
+          "position": 7,
+          "name": "Crown Chakra",
+          "meaning": "Spirituality, consciousness, divine connection"
+        }
+      ]
+    },
+    {
+      "id": "relationship",
+      "name": "Relationship Spread",
+      "description": "Explore dynamics between two people",
+      "positions": [
+        {
+          "position": 1,
+          "name": "You",
+          "meaning": "Your position and feelings"
+        },
+        {
+          "position": 2,
+          "name": "The Other",
+          "meaning": "Their position and feelings"
+        },
+        {
+          "position": 3,
+          "name": "The Connection",
+          "meaning": "The bond between you"
+        },
+        {
+          "position": 4,
+          "name": "Challenges",
+          "meaning": "What creates difficulty"
+        },
+        {
+          "position": 5,
+          "name": "Strengths",
+          "meaning": "What supports the relationship"
+        },
+        {
+          "position": 6,
+          "name": "Path Forward",
+          "meaning": "Guidance for the relationship"
+        }
+      ]
+    },
+    {
+      "id": "adinkra-wisdom",
+      "name": "Adinkra Wisdom Spread",
+      "description": "A special spread connecting tarot with Adinkra philosophy",
+      "positions": [
+        {
+          "position": 1,
+          "name": "Sankofa - Past Wisdom",
+          "meaning": "What you need to retrieve from your past"
+        },
+        {
+          "position": 2,
+          "name": "Gye Nyame - Divine Presence",
+          "meaning": "How the divine is working in your life"
+        },
+        {
+          "position": 3,
+          "name": "Dwennimmen - Strength",
+          "meaning": "Your hidden strength"
+        },
+        {
+          "position": 4,
+          "name": "Nkyinkyim - Journey",
+          "meaning": "The path ahead"
+        },
+        {
+          "position": 5,
+          "name": "Akoma - Heart",
+          "meaning": "What your heart needs"
+        }
+      ]
+    }
+  ]
+}

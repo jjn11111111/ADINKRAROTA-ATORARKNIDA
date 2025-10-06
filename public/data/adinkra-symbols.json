@@ -1,0 +1,284 @@
+{
+  "symbols": [
+    {
+      "name": "gye_nyame",
+      "meaning": "Except for God",
+      "symbolism": "The supremacy of God in all affairs. This is one of the most popular Adinkra symbols.",
+      "proverb": "Abode santann yi firi tete; obi nte ase a anka onte Onyankopɔn ase",
+      "literal_translation": "Except God, I fear none"
+    },
+    {
+      "name": "sankofa",
+      "meaning": "Return and get it",
+      "symbolism": "The importance of learning from the past. It teaches that one must go back and fetch what is forgotten.",
+      "proverb": "Se wo were fi na wosankofa a yenkyi",
+      "literal_translation": "It is not wrong to go back for that which you have forgotten"
+    },
+    {
+      "name": "dwennimmen",
+      "meaning": "Ram's horns",
+      "symbolism": "Humility together with strength. The ram will fight fiercely against an adversary, yet it also submits humbly to slaughter.",
+      "proverb": "Dwennini ye asem a, ne werɛ ɔde ayɛ ne ho ɔbirifo",
+      "literal_translation": "It is the heart and not the horns that leads a ram to bully"
+    },
+    {
+      "name": "akoma",
+      "meaning": "The heart",
+      "symbolism": "Patience, tolerance, and understanding. The heart is considered the seat of feeling.",
+      "proverb": "Nya akoma pa na akoma te wo mu",
+      "literal_translation": "Have a good heart and your heart will rest peacefully within you"
+    },
+    {
+      "name": "adinkrahene",
+      "meaning": "Chief of the Adinkra symbols",
+      "symbolism": "Greatness, charisma, and leadership. This symbol is said to have inspired the design of other Adinkra symbols.",
+      "proverb": "Adinkrahene ne toro agyina",
+      "literal_translation": "The chief of Adinkra symbols stands above all"
+    },
+    {
+      "name": "nyame_dua",
+      "meaning": "Tree of God",
+      "symbolism": "God's presence and protection. This is a sacred spot where rituals are performed.",
+      "proverb": "Onyame dua wo m'anim a, minya me ho",
+      "literal_translation": "When the tree of God is before me, I am not afraid"
+    },
+    {
+      "name": "nkyinkyim",
+      "meaning": "Twisting",
+      "symbolism": "Initiative, dynamism, and versatility. Represents life's ups and downs.",
+      "proverb": "Nkyinkyim nsuo ani yɛ nkyinkyim a, ɛnhohoro ba",
+      "literal_translation": "Playing about on the surface of water does not bring prosperity"
+    },
+    {
+      "name": "odo_nnyew_fie_kwan",
+      "meaning": "Love never loses its way home",
+      "symbolism": "The power of love. True love always finds its way back.",
+      "proverb": "Odo nnyew fie kwan",
+      "literal_translation": "Love does not get lost on the way home"
+    },
+    {
+      "name": "epa",
+      "meaning": "Handcuffs",
+      "symbolism": "Law, justice, captivity, slavery, and bondage. A symbol of law and order.",
+      "proverb": "Epa wo sore a, wope sɛ woyi",
+      "literal_translation": "When handcuffs are on your hands, you want them removed"
+    },
+    {
+      "name": "mmere_dane",
+      "meaning": "Time changes",
+      "symbolism": "Life is dynamic and constantly changing. What is true today may not be tomorrow.",
+      "proverb": "Mmere dane, mmere dane",
+      "literal_translation": "Times change, times change"
+    },
+    {
+      "name": "nsoromma",
+      "meaning": "Child of the heavens (star)",
+      "symbolism": "Guardianship of the Supreme Being. A symbol of faithfulness.",
+      "proverb": "Nsoromma pa ne nea ɔbɔ ne ho ban ma Nyame",
+      "literal_translation": "A good star is one that protects itself for God"
+    },
+    {
+      "name": "bese_saka",
+      "meaning": "Sack of cola nuts",
+      "symbolism": "Affluence, power, abundance, plenty, togetherness, and unity.",
+      "proverb": "Bese ne saka, woahyehyɛ mu boa bi pɛ",
+      "literal_translation": "In a bag of cola nuts, you will find some helpers"
+    },
+    {
+      "name": "owuo_atwedee",
+      "meaning": "Ladder of death",
+      "symbolism": "The inevitability of death and mortality. No one can escape death.",
+      "proverb": "Owuo atwedee baako mforo",
+      "literal_translation": "All people shall climb the ladder of death"
+    },
+    {
+      "name": "eban",
+      "meaning": "Fence",
+      "symbolism": "Love, safety, security, and protection. The fence protects the family.",
+      "proverb": "Eban ye dwanwa",
+      "literal_translation": "A fence is meant to protect"
+    },
+    {
+      "name": "fofo",
+      "meaning": "Yellow",
+      "symbolism": "Jealousy and envy. A warning against these negative emotions.",
+      "proverb": "Fofo suro",
+      "literal_translation": "Jealousy stirs up strife"
+    },
+    {
+      "name": "denkyem",
+      "meaning": "Crocodile",
+      "symbolism": "Adaptability. The crocodile lives in water yet breathes air, demonstrating adaptability and ability to thrive in two worlds.",
+      "proverb": "Denkyem di nsuo mu, nanso ɔhome mframa",
+      "literal_translation": "The crocodile lives in water but breathes air"
+    },
+    {
+      "name": "osrane",
+      "meaning": "The moon",
+      "symbolism": "Faithfulness, fondness, love, harmony, benevolence, and female essence.",
+      "proverb": "Osrane bɔ po, ɛpo nhyia no",
+      "literal_translation": "The moon shines on all, showing no favoritism"
+    },
+    {
+      "name": "owia",
+      "meaning": "The sun",
+      "symbolism": "Vitality, energy, and the life-giving force. Essential for all life.",
+      "proverb": "Owia bɛyɛ owia",
+      "literal_translation": "The sun will be the sun"
+    },
+    {
+      "name": "bi_nka_bi",
+      "meaning": "No one should bite the other",
+      "symbolism": "Peace and harmony. Avoid conflict and strife with one another.",
+      "proverb": "Bi nka bi na bi nka bi kye",
+      "literal_translation": "Let no one bite another; let there be no conflict"
+    },
+    {
+      "name": "funtunfunefu_denkyemfunefu",
+      "meaning": "Siamese crocodiles",
+      "symbolism": "Democracy, unity in diversity. Two crocodiles share one stomach yet they fight over food.",
+      "proverb": "Funtunfunefu denkyemfunefu, wɔn afuru bom nanso wɔdidi ko fa aduan no ho",
+      "literal_translation": "The Siamese crocodiles share one stomach yet fight over food"
+    },
+    {
+      "name": "biribi_wo_soro",
+      "meaning": "There is something in the heavens",
+      "symbolism": "Hope and inspiration. Whatever your need, God will provide.",
+      "proverb": "Biribi wo soro ma me nya",
+      "literal_translation": "There is something in the heavens, let me reach it"
+    },
+    {
+      "name": "nea_onnim",
+      "meaning": "He who does not know",
+      "symbolism": "Knowledge, life-long learning, and continued education.",
+      "proverb": "Nea onnim no sua a, ohu",
+      "literal_translation": "He who does not know can know from learning"
+    },
+    {
+      "name": "wawa_aba",
+      "meaning": "Seed of the wawa tree",
+      "symbolism": "Hardiness, toughness, and perseverance. The wawa seed is extremely hard.",
+      "proverb": "Wawa aba a, ɛyɛ den",
+      "literal_translation": "The seed of the wawa tree is hard"
+    },
+    {
+      "name": "akoma_ntoaso",
+      "meaning": "Linked hearts",
+      "symbolism": "Understanding and agreement. Unity in relationships.",
+      "proverb": "Akoma ntoaso ye ye",
+      "literal_translation": "Linked hearts bring good fortune"
+    },
+    {
+      "name": "nkonsonkonson",
+      "meaning": "Chain link",
+      "symbolism": "Unity and human relations. We are all linked in humanity.",
+      "proverb": "Nkonsonkonson - Akokoano mu nkabom",
+      "literal_translation": "Unity makes strength"
+    },
+    {
+      "name": "ananse_ntontan",
+      "meaning": "Spider's web",
+      "symbolism": "Wisdom, creativity, and the complexities of life.",
+      "proverb": "Ananse ntontan - nimdeɛ ne ntɔkwa ho ahode",
+      "literal_translation": "Spider's web - symbol of wisdom, craftiness and creativity"
+    },
+    {
+      "name": "nsaa",
+      "meaning": "Type of hand-woven cloth",
+      "symbolism": "Excellence, genuineness, and authenticity. A symbol of quality.",
+      "proverb": "Nsaa pa ne nea ɛhyɛ yiye",
+      "literal_translation": "Good nsaa is that which is woven perfectly"
+    },
+    {
+      "name": "ese_ne_tekrema",
+      "meaning": "The teeth and the tongue",
+      "symbolism": "Friendship, interdependence, and understanding. They may clash but they work together.",
+      "proverb": "Ese ne tɛkrɛma di nkɔmpem nanso wɔnam bom yie",
+      "literal_translation": "The teeth and tongue play together, sometimes they clash but they work in unity"
+    },
+    {
+      "name": "aya",
+      "meaning": "Fern",
+      "symbolism": "Endurance, resourcefulness, and defiance against difficulties.",
+      "proverb": "Aya - menkum mmɔbɔ ho ahobaa",
+      "literal_translation": "The fern - symbol of endurance and resourcefulness"
+    },
+    {
+      "name": "duafe",
+      "meaning": "Wooden comb",
+      "symbolism": "Beauty and cleanliness, feminine qualities, desirability.",
+      "proverb": "Duafe - ahoɔfɛ ho ahode",
+      "literal_translation": "Wooden comb - symbol of beauty and hygiene"
+    },
+    {
+      "name": "mpatapo",
+      "meaning": "Knot of reconciliation",
+      "symbolism": "Reconciliation, peacemaking, and pacification.",
+      "proverb": "Mpatapo - asomdwee ne mpata ho ahode",
+      "literal_translation": "Knot of reconciliation - symbol of peacemaking"
+    },
+    {
+      "name": "nyame_nti",
+      "meaning": "By God's grace",
+      "symbolism": "Faith and trust in God. All things happen by the will of God.",
+      "proverb": "Nyame nti menwu",
+      "literal_translation": "By God's grace, I shall not die"
+    },
+    {
+      "name": "nteasee",
+      "meaning": "Understanding",
+      "symbolism": "Wisdom, knowledge, and prudence.",
+      "proverb": "Ntease - nimdeɛ ne ntease ho ahode",
+      "literal_translation": "Symbol of wisdom and knowledge"
+    },
+    {
+      "name": "me_ware_wo",
+      "meaning": "I shall marry you",
+      "symbolism": "Commitment, perseverance, and dedication in relationships.",
+      "proverb": "Me ware wo - awarede ho ahode",
+      "literal_translation": "I shall marry you - symbol of commitment"
+    },
+    {
+      "name": "mpuannum",
+      "meaning": "Five tufts",
+      "symbolism": "Loyalty, adroitness, and priestly office.",
+      "proverb": "Mpuannum - nokware ho ahode",
+      "literal_translation": "Five tufts - symbol of loyalty and readiness to serve"
+    },
+    {
+      "name": "nyame_biribi_wo_soro",
+      "meaning": "God is in the heavens",
+      "symbolism": "Hope and the presence of God.",
+      "proverb": "Nyame biribi wo soro na manya",
+      "literal_translation": "There is something from God in the heavens for me"
+    },
+    {
+      "name": "nyame_nwu_na_mawu",
+      "meaning": "God never dies, therefore I cannot die",
+      "symbolism": "Immortality of the human soul, life after death.",
+      "proverb": "Onyame nwu na mawu",
+      "literal_translation": "God never dies, therefore I cannot die"
+    },
+    {
+      "name": "adwo",
+      "meaning": "Peace",
+      "symbolism": "Serenity, calmness, and tranquility.",
+      "proverb": "Adwo - asomdwoe ho ahode",
+      "literal_translation": "Symbol of peace, rest and tranquility"
+    },
+    {
+      "name": "daame_dame",
+      "meaning": "Name of a board game",
+      "symbolism": "Intelligence, ingenuity, and strategy.",
+      "proverb": "Daame dame - nyansa ne ntɔkwa ho ahode",
+      "literal_translation": "Intelligence and craftiness"
+    },
+    {
+      "name": "hye_wo_nhye",
+      "meaning": "That which does not burn",
+      "symbolism": "Imperishability and endurance. Something that cannot be destroyed.",
+      "proverb": "Hye wo nhye - ahoɔden ne nti ho ahode",
+      "literal_translation": "That which does not burn - symbol of imperishability and endurance"
+    }
+  ]
+}
