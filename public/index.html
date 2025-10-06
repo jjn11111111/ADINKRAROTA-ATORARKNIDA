@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adinkrarota-Atorarknida | Tarot & Adinkra Deck</title>
+    <meta name="description" content="A full 78 card tarot deck with extensive guidebook, uniting tarot and Adinkra symbols with 3D interactions">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <h1 class="title">Adinkrarota-Atorarknida</h1>
+                <p class="subtitle">Where Tarot Meets Adinkra</p>
+                <nav class="nav">
+                    <button class="nav-btn active" data-view="home">Home</button>
+                    <button class="nav-btn" data-view="deck">Full Deck</button>
+                    <button class="nav-btn" data-view="spread">Card Spread</button>
+                    <button class="nav-btn" data-view="guidebook">Guidebook</button>
+                    <button class="nav-btn" data-view="symbols">Adinkra Symbols</button>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Home View -->
+            <section id="home-view" class="view active">
+                <div class="container">
+                    <div class="hero">
+                        <h2>Welcome to the Sacred Union</h2>
+                        <p class="intro-text">
+                            Experience the ancient wisdom of tarot harmonized with the profound symbolism 
+                            of Adinkra. This complete 78-card deck bridges cultures and consciousness, 
+                            offering guidance through the timeless language of symbols.
+                        </p>
+                        <div class="feature-grid">
+                            <div class="feature-card">
+                                <h3>🎴 78 Card Deck</h3>
+                                <p>Complete Major and Minor Arcana, each paired with meaningful Adinkra symbols</p>
+                            </div>
+                            <div class="feature-card">
+                                <h3>📖 Extensive Guidebook</h3>
+                                <p>Deep insights into card meanings, Adinkra wisdom, and their sacred union</p>
+                            </div>
+                            <div class="feature-card">
+                                <h3>🎯 Multiple Spreads</h3>
+                                <p>From simple three-card draws to the complex Celtic Cross</p>
+                            </div>
+                            <div class="feature-card">
+                                <h3>✨ 3D Interactions</h3>
+                                <p>Immersive card viewing and symbol exploration</p>
+                            </div>
+                        </div>
+                        <div class="cta-section">
+                            <button class="cta-btn" onclick="showView('spread')">
+                                Draw Your Cards
+                            </button>
+                            <button class="cta-btn secondary" onclick="showView('deck')">
+                                Explore the Deck
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Deck View -->
+            <section id="deck-view" class="view">
+                <div class="container">
+                    <h2>The Complete Deck</h2>
+                    <div class="deck-filter">
+                        <button class="filter-btn active" data-filter="all">All Cards (78)</button>
+                        <button class="filter-btn" data-filter="major">Major Arcana (22)</button>
+                        <button class="filter-btn" data-filter="wands">Wands (14)</button>
+                        <button class="filter-btn" data-filter="cups">Cups (14)</button>
+                        <button class="filter-btn" data-filter="swords">Swords (14)</button>
+                        <button class="filter-btn" data-filter="pentacles">Pentacles (14)</button>
+                    </div>
+                    <div id="card-grid" class="card-grid">
+                        <!-- Cards will be populated by JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Spread View -->
+            <section id="spread-view" class="view">
+                <div class="container">
+                    <h2>Card Spreads</h2>
+                    <div class="spread-selector">
+                        <label for="spread-type">Choose a spread:</label>
+                        <select id="spread-type" class="spread-select">
+                            <option value="">-- Select a spread --</option>
+                        </select>
+                        <button id="draw-cards-btn" class="action-btn" disabled>Draw Cards</button>
+                        <button id="reset-spread-btn" class="action-btn secondary">Reset</button>
+                    </div>
+                    <div id="spread-info" class="spread-info">
+                        <h3 id="spread-name"></h3>
+                        <p id="spread-description"></p>
+                    </div>
+                    <div id="spread-layout" class="spread-layout">
+                        <!-- Spread positions will be populated by JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Guidebook View -->
+            <section id="guidebook-view" class="view">
+                <div class="container">
+                    <h2>The Guidebook</h2>
+                    <div class="guidebook-content">
+                        <div class="guidebook-intro">
+                            <h3>Introduction to Adinkrarota-Atorarknida</h3>
+                            <p>
+                                This unique deck represents a sacred fusion of two powerful divinatory and 
+                                symbolic systems: the Western tarot tradition and the West African Adinkra symbols 
+                                of the Akan people of Ghana.
+                            </p>
+                            <p>
+                                Each of the 78 cards in this deck carries not only the traditional tarot meaning 
+                                but is also infused with the wisdom of a corresponding Adinkra symbol, creating 
+                                a richer, more nuanced reading experience that honors both traditions.
+                            </p>
+                        </div>
+
+                        <div class="guidebook-section">
+                            <h3>Understanding the Major Arcana</h3>
+                            <p>
+                                The 22 cards of the Major Arcana represent life's karmic and spiritual lessons. 
+                                They are the keys to understanding the deeper meaning behind events in our lives. 
+                                When paired with Adinkra symbols, these archetypal energies gain additional layers 
+                                of cultural wisdom and philosophical depth.
+                            </p>
+                        </div>
+
+                        <div class="guidebook-section">
+                            <h3>Understanding the Minor Arcana</h3>
+                            <p>
+                                The 56 cards of the Minor Arcana represent day-to-day events and experiences. 
+                                Divided into four suits (Wands, Cups, Swords, and Pentacles), they correspond to 
+                                the four elements and aspects of life.
+                            </p>
+                            <ul class="suit-list">
+                                <li><strong>Wands (Fire):</strong> Action, passion, creativity, energy</li>
+                                <li><strong>Cups (Water):</strong> Emotions, relationships, intuition, feelings</li>
+                                <li><strong>Swords (Air):</strong> Thoughts, communication, conflict, truth</li>
+                                <li><strong>Pentacles (Earth):</strong> Material world, resources, work, body</li>
+                            </ul>
+                        </div>
+
+                        <div class="guidebook-section">
+                            <h3>About Adinkra Symbols</h3>
+                            <p>
+                                Adinkra are visual symbols that represent concepts or aphorisms. Originally created 
+                                by the Akan people of Ghana and Côte d'Ivoire, these symbols are imbued with meanings 
+                                drawn from proverbs, historical events, human behavior, animal behavior, plant forms, 
+                                and shapes of inanimate objects.
+                            </p>
+                            <p>
+                                The word "Adinkra" itself means "goodbye" or "farewell" in Akan. These symbols were 
+                                traditionally worn by royalty and spiritual leaders for important ceremonies.
+                            </p>
+                        </div>
+
+                        <div class="guidebook-section">
+                            <h3>How to Use This Deck</h3>
+                            <ol class="instruction-list">
+                                <li>
+                                    <strong>Prepare Your Space:</strong> Find a quiet place where you won't be disturbed. 
+                                    You may wish to light a candle or incense.
+                                </li>
+                                <li>
+                                    <strong>Clear Your Mind:</strong> Take a few deep breaths and center yourself. 
+                                    Focus on your question or intention.
+                                </li>
+                                <li>
+                                    <strong>Choose a Spread:</strong> Select a spread that fits your question. 
+                                    Simple questions work well with three-card spreads, while complex situations 
+                                    benefit from larger spreads.
+                                </li>
+                                <li>
+                                    <strong>Draw Your Cards:</strong> Draw cards intuitively. Trust your first instinct.
+                                </li>
+                                <li>
+                                    <strong>Consider Both Meanings:</strong> Reflect on both the traditional tarot 
+                                    meaning and the Adinkra symbol's wisdom. How do they complement each other?
+                                </li>
+                                <li>
+                                    <strong>Trust Your Intuition:</strong> While guidebook meanings are helpful, 
+                                    your intuitive response to the cards is equally important.
+                                </li>
+                            </ol>
+                        </div>
+
+                        <div class="guidebook-section">
+                            <h3>Reading Tips</h3>
+                            <ul class="tips-list">
+                                <li>Look for patterns across multiple cards</li>
+                                <li>Notice which suits appear most frequently</li>
+                                <li>Pay attention to reversed cards (if using reversals)</li>
+                                <li>Consider how Adinkra meanings amplify or modify traditional interpretations</li>
+                                <li>Keep a tarot journal to track your readings and insights</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Adinkra Symbols View -->
+            <section id="symbols-view" class="view">
+                <div class="container">
+                    <h2>Adinkra Symbols Reference</h2>
+                    <p class="intro-text">
+                        Explore the meanings and wisdom behind the Adinkra symbols featured in this deck.
+                    </p>
+                    <div id="symbols-grid" class="symbols-grid">
+                        <!-- Symbols will be populated by JavaScript -->
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Card Modal -->
+        <div id="card-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div id="card-detail" class="card-detail">
+                    <!-- Card details will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2024 Adinkrarota-Atorarknida. A fusion of wisdom traditions.</p>
+                <p class="firebase-notice">Powered by Firebase</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/three@0.159.0/build/three.min.js"></script>
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
