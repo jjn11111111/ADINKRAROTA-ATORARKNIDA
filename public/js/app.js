@@ -319,6 +319,7 @@ function drawCards() {
     
     // Reset drawn cards
     appState.drawnCards = [];
+    displaySpreadLayout();
     
     // Create a shuffled deck
     const shuffledDeck = [...appState.tarotCards].sort(() => Math.random() - 0.5);
@@ -345,6 +346,10 @@ function displayDrawnCards() {
         const posElement = document.querySelector(`[data-position="${drawn.position}"]`);
         if (posElement) {
             posElement.classList.add('filled');
+            const existingCard = posElement.querySelector('.drawn-card');
+            if (existingCard) {
+                existingCard.remove();
+            }
             
             const drawnCardDiv = document.createElement('div');
             drawnCardDiv.className = 'drawn-card';

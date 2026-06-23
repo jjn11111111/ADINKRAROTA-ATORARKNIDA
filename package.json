@@ -5,6 +5,7 @@
   "main": "index.html",
   "scripts": {
     "start": "firebase serve",
+    "test": "node tests/validate-app.js && bash test-data.sh && node --check public/js/app.js && node --check public/js/card3d.js",
     "deploy": "firebase deploy"
   },
   "keywords": [

@@ -14,6 +14,7 @@ class Card3DViewer {
         this.renderer = null;
         this.card = null;
         this.animationId = null;
+        this.rotationSpeed = 0.01;
         
         this.init();
     }
@@ -100,14 +101,18 @@ class Card3DViewer {
         
         // Rotate card
         if (this.card) {
-            this.card.rotation.y += 0.01;
+            this.card.rotation.y += this.rotationSpeed;
             this.card.rotation.x = Math.sin(Date.now() * 0.001) * 0.1;
         }
         
-        this.renderer.render(this.scene, this.camera);
+        if (this.renderer) {
+            this.renderer.render(this.scene, this.camera);
+        }
     }
     
     onWindowResize() {
+        if (!this.container || !this.camera || !this.renderer) return;
+
         const width = this.container.clientWidth;
         const height = this.container.clientHeight || 300;
         
@@ -150,7 +155,7 @@ class Card3DViewer {
     
     // Control card rotation speed
     setRotationSpeed(speed) {
-        this.rotationSpeed = speed;
+        this.rotationSpeed = Number.isFinite(speed) ? speed : this.rotationSpeed;
     }
     
     // Flip card animation
