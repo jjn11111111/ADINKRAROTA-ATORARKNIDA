@@ -8,6 +8,7 @@ export default tseslint.config(
       ".next/**",
       "node_modules/**",
       "public/**",
+      "eslint.config.mjs",
       "next-env.d.ts",
     ],
   },
