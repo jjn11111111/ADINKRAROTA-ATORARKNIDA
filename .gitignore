@@ -20,6 +20,7 @@ public/js/firebase-config.js
 .next/
 dist/
 build/
+*.tsbuildinfo
 
 # IDE
 .vscode/
