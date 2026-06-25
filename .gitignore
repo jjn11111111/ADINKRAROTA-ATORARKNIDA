@@ -17,6 +17,7 @@ public/js/firebase-config.js
 .env.production
 
 # Build output
+.next/
 dist/
 build/
 
