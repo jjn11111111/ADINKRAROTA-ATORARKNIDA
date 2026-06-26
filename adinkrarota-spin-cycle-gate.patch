@@ -1,0 +1,357 @@
+From 136a6355521bff14b43af439efbb43f977d59e88 Mon Sep 17 00:00:00 2001
+From: Cursor Agent <cursoragent@cursor.com>
+Date: Thu, 25 Jun 2026 07:18:41 +0000
+Subject: [PATCH] Fix Spin Cycle membership gate
+
+---
+ app/api/spin-cycle-ephemeris/route.ts |  30 ++----
+ app/api/spin-cycle-insight/route.ts   |  26 +----
+ app/page.tsx                          |  12 ++-
+ components/spin-cycle.tsx             |  23 +++-
+ lib/spin-cycle-access.ts              | 144 ++++++++++++++++++++++++++
+ 5 files changed, 183 insertions(+), 52 deletions(-)
+ create mode 100644 lib/spin-cycle-access.ts
+
+diff --git a/app/api/spin-cycle-ephemeris/route.ts b/app/api/spin-cycle-ephemeris/route.ts
+index f90d6df..a95ba8e 100644
+--- a/app/api/spin-cycle-ephemeris/route.ts
++++ b/app/api/spin-cycle-ephemeris/route.ts
+@@ -7,6 +7,7 @@ import {
+   formatAspectBlock,
+   formatEphemerisBlock,
+ } from "@/lib/spin-cycle-ephemeris";
++import { requireSpinCycleMember } from "@/lib/spin-cycle-access";
+ 
+ export const runtime = "nodejs";
+ 
+@@ -17,29 +18,12 @@ const bodySchema = z.object({
+ 
+ export async function POST(req: Request) {
+   const supabase = await createClient();
+-  if (!supabase) {
+-    return NextResponse.json({ error: "Authentication is not configured." }, { status: 503 });
+-  }
+-
+-  const {
+-    data: { user },
+-    error: authError,
+-  } = await supabase.auth.getUser();
+-  if (authError || !user) {
+-    return NextResponse.json({ error: "Sign in required for Spin Cycle ephemeris." }, { status: 401 });
+-  }
+-
+-  const { data: profile } = await supabase
+-    .from("profiles")
+-    .select("account_type")
+-    .eq("id", user.id)
+-    .single();
+-  const accountType = profile?.account_type ?? user.user_metadata?.account_type;
+-  if (accountType !== "member") {
+-    return NextResponse.json(
+-      { error: "Spin Cycle interactive ephemeris is available with Membership ($2.22)." },
+-      { status: 403 },
+-    );
++  const access = await requireSpinCycleMember(
++    supabase,
++    "Spin Cycle interactive ephemeris",
++  );
++  if (!access.ok) {
++    return NextResponse.json({ error: access.error }, { status: access.status });
+   }
+ 
+   let json: unknown;
+diff --git a/app/api/spin-cycle-insight/route.ts b/app/api/spin-cycle-insight/route.ts
+index 77aad47..e12ce96 100644
+--- a/app/api/spin-cycle-insight/route.ts
++++ b/app/api/spin-cycle-insight/route.ts
+@@ -7,6 +7,7 @@ import {
+   isGroqInvalidApiKeyMessage,
+ } from "@/lib/ai-groq";
+ import { groqLanguageModel, isGroqConfigured } from "@/lib/ai-groq-server";
++import { requireSpinCycleMember } from "@/lib/spin-cycle-access";
+ 
+ export const runtime = "nodejs";
+ export const maxDuration = 60;
+@@ -68,28 +69,9 @@ export async function POST(req: Request) {
+     }
+ 
+     const supabase = await createClient();
+-    if (!supabase) {
+-      return Response.json({ error: "Authentication is not configured." }, { status: 503 });
+-    }
+-    const {
+-      data: { user },
+-      error: authError,
+-    } = await supabase.auth.getUser();
+-    if (authError || !user) {
+-      return Response.json({ error: "Sign in required for Spin Cycle AI insight." }, { status: 401 });
+-    }
+-
+-    const { data: profile } = await supabase
+-      .from("profiles")
+-      .select("account_type")
+-      .eq("id", user.id)
+-      .single();
+-    const accountType = profile?.account_type ?? user.user_metadata?.account_type;
+-    if (accountType !== "member") {
+-      return Response.json(
+-        { error: "Spin Cycle AI insight is available with Membership ($2.22)." },
+-        { status: 403 },
+-      );
++    const access = await requireSpinCycleMember(supabase, "Spin Cycle AI insight");
++    if (!access.ok) {
++      return Response.json({ error: access.error }, { status: access.status });
+     }
+ 
+     const body = await req.json().catch(() => ({}));
+diff --git a/app/page.tsx b/app/page.tsx
+index 3136fb5..f3cbb22 100644
+--- a/app/page.tsx
++++ b/app/page.tsx
+@@ -30,7 +30,7 @@ const PATH_TO_VIEW: Record<string, View> = {
+ 
+ export default function AdinkrarotaApp() {
+   const router = useRouter();
+-  const { profile, isAuthenticated } = useAuth();
++  const { profile, isAuthenticated, isLoading } = useAuth();
+   const [currentView, setCurrentView] = useState<View>("home");
+   const contentRef = useRef<HTMLDivElement>(null);
+   
+@@ -327,7 +327,15 @@ export default function AdinkrarotaApp() {
+               exit={{ opacity: 0 }}
+               transition={{ duration: 0.3 }}
+             >
+-              <SpinCycle canUseInteractive={isAuthenticated && profile?.accountType === "member"} />
++              <SpinCycle
++                accessState={
++                  isLoading
++                    ? "loading"
++                    : isAuthenticated && profile?.accountType === "member"
++                      ? "member"
++                      : "public"
++                }
++              />
+             </motion.div>
+           )}
+ 
+diff --git a/components/spin-cycle.tsx b/components/spin-cycle.tsx
+index 698b491..05bc63e 100644
+--- a/components/spin-cycle.tsx
++++ b/components/spin-cycle.tsx
+@@ -55,7 +55,7 @@ const emptyFields: SpinCycleFields = {
+ };
+ 
+ interface SpinCycleProps {
+-  canUseInteractive: boolean;
++  accessState: "loading" | "public" | "member";
+ }
+ 
+ function trimSnippet(text: string, max: number): string {
+@@ -226,7 +226,7 @@ function SpinCycleCaseStudy() {
+   );
+ }
+ 
+-export function SpinCycle({ canUseInteractive }: SpinCycleProps) {
++export function SpinCycle({ accessState }: SpinCycleProps) {
+   const [step, setStep] = useState(0);
+   const [fields, setFields] = useState<SpinCycleFields>(emptyFields);
+   const [copied, setCopied] = useState(false);
+@@ -428,14 +428,20 @@ export function SpinCycle({ canUseInteractive }: SpinCycleProps) {
+         </p>
+       </header>
+ 
+-      {!canUseInteractive && (
++      {accessState === "loading" && (
++        <div className="mb-8 rounded-lg border border-border bg-card/50 px-4 py-3 text-sm font-serif text-muted-foreground">
++          Checking your membership access…
++        </div>
++      )}
++
++      {accessState === "public" && (
+         <div className="mb-8 rounded-lg border border-primary/30 bg-primary/10 px-4 py-3 text-sm font-serif text-muted-foreground">
+           Interactive Spin Cycle is a Membership feature ($2.22). You can explore the full method below
+           with this in-depth case study.
+         </div>
+       )}
+ 
+-      {canUseInteractive ? (
++      {accessState === "member" ? (
+         <>
+       {/* Step tabs */}
+       <nav className="flex flex-wrap justify-center gap-2 mb-10" aria-label="Spin Cycle steps">
+@@ -845,7 +851,7 @@ export function SpinCycle({ canUseInteractive }: SpinCycleProps) {
+         )}
+       </div>
+         </>
+-      ) : (
++      ) : accessState === "public" ? (
+         <div className="space-y-6">
+           <SpinCycleCaseStudy />
+           <div className="rounded-xl border border-primary/30 bg-card/60 p-5 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
+@@ -865,6 +871,13 @@ export function SpinCycle({ canUseInteractive }: SpinCycleProps) {
+             </div>
+           </div>
+         </div>
++      ) : (
++        <div className="rounded-xl mystical-border bg-card/40 backdrop-blur-sm p-6 md:p-8">
++          <div className="flex items-center gap-3 text-muted-foreground font-serif">
++            <Loader2 className="w-4 h-4 animate-spin text-primary" aria-hidden />
++            <span>Loading Spin Cycle access…</span>
++          </div>
++        </div>
+       )}
+     </div>
+   );
+diff --git a/lib/spin-cycle-access.ts b/lib/spin-cycle-access.ts
+new file mode 100644
+index 0000000..15d0541
+--- /dev/null
++++ b/lib/spin-cycle-access.ts
+@@ -0,0 +1,144 @@
++import type { SupabaseClient, User } from "@supabase/supabase-js";
++import { stripe, isStripeConfigured } from "@/lib/stripe";
++import { getSupabaseAdmin } from "@/lib/supabase/admin";
++
++type ProfileMembershipRow = {
++  account_type?: string | null;
++  stripe_customer_id?: string | null;
++  stripe_payment_id?: string | null;
++};
++
++export type SpinCycleAccessResult =
++  | { ok: true; user: User; accountType: "member" }
++  | { ok: false; status: 401 | 403 | 503; error: string };
++
++function isActiveSubscriptionStatus(status: string): boolean {
++  return status === "active" || status === "trialing";
++}
++
++async function persistMemberProfile(
++  admin: SupabaseClient,
++  user: User,
++  opts: { subscriptionId: string; customerId: string | null },
++) {
++  await admin.from("profiles").upsert(
++    {
++      id: user.id,
++      email: user.email || "",
++      account_type: "member",
++      stripe_payment_id: opts.subscriptionId,
++      ...(opts.customerId ? { stripe_customer_id: opts.customerId } : {}),
++      year_started: new Date().getFullYear(),
++      updated_at: new Date().toISOString(),
++    },
++    { onConflict: "id" },
++  );
++}
++
++async function restoreActiveStripeMembership(
++  user: User,
++  profile: ProfileMembershipRow | null,
++): Promise<boolean> {
++  if (!isStripeConfigured() || !stripe) return false;
++
++  const admin = getSupabaseAdmin();
++  if (!admin) return false;
++
++  const profileSubId =
++    typeof profile?.stripe_payment_id === "string" &&
++    profile.stripe_payment_id.startsWith("sub_")
++      ? profile.stripe_payment_id
++      : null;
++
++  if (profileSubId) {
++    const sub = await stripe.subscriptions.retrieve(profileSubId);
++    if (isActiveSubscriptionStatus(sub.status)) {
++      const customerId =
++        typeof sub.customer === "string" ? sub.customer : sub.customer?.id ?? null;
++      await persistMemberProfile(admin, user, {
++        subscriptionId: sub.id,
++        customerId,
++      });
++      return true;
++    }
++  }
++
++  const profileCustomerId =
++    typeof profile?.stripe_customer_id === "string"
++      ? profile.stripe_customer_id
++      : null;
++
++  const candidateCustomerIds = new Set<string>();
++  if (profileCustomerId) {
++    candidateCustomerIds.add(profileCustomerId);
++  }
++
++  if (user.email) {
++    const customers = await stripe.customers.list({
++      email: user.email,
++      limit: 5,
++    });
++    customers.data.forEach((customer) => candidateCustomerIds.add(customer.id));
++  }
++
++  for (const customerId of candidateCustomerIds) {
++    const subs = await stripe.subscriptions.list({
++      customer: customerId,
++      limit: 10,
++    });
++    const active = subs.data.find((sub) => isActiveSubscriptionStatus(sub.status));
++    if (active) {
++      await persistMemberProfile(admin, user, {
++        subscriptionId: active.id,
++        customerId,
++      });
++      return true;
++    }
++  }
++
++  return false;
++}
++
++export async function requireSpinCycleMember(
++  supabase: SupabaseClient | null,
++  featureLabel: string,
++): Promise<SpinCycleAccessResult> {
++  if (!supabase) {
++    return { ok: false, status: 503, error: "Authentication is not configured." };
++  }
++
++  const {
++    data: { user },
++    error: authError,
++  } = await supabase.auth.getUser();
++  if (authError || !user) {
++    return { ok: false, status: 401, error: `Sign in required for ${featureLabel}.` };
++  }
++
++  const { data: profile } = await supabase
++    .from("profiles")
++    .select("account_type, stripe_customer_id, stripe_payment_id")
++    .eq("id", user.id)
++    .maybeSingle();
++
++  const profileAccountType = profile?.account_type;
++  const metadataAccountType = user.user_metadata?.account_type;
++  if (profileAccountType === "member" || metadataAccountType === "member") {
++    return { ok: true, user, accountType: "member" };
++  }
++
++  try {
++    const restored = await restoreActiveStripeMembership(user, profile);
++    if (restored) {
++      return { ok: true, user, accountType: "member" };
++    }
++  } catch (error) {
++    console.error("Spin Cycle membership restore failed:", error);
++  }
++
++  return {
++    ok: false,
++    status: 403,
++    error: `${featureLabel} is available with Membership ($2.22).`,
++  };
++}
+-- 
+2.43.0
+
